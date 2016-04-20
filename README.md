@@ -11,6 +11,8 @@ Download [v8](https://github.com/v8/v8/wiki/Using%20Git).
 
 ### Linux
 
+Assumes that this repository is checked out at `$LIBV8`.
+
 Build:
 
     make x64.release GYPFLAGS="-Dv8_use_external_startup_data=0 \
@@ -26,7 +28,7 @@ If build system produces a thin archive, you want to make it into a fat one:
 Copy the libraries to the destination directory:
 
     cp -v out/x64.release/obj.target/tools/gyp/libv8_{base,libbase,external,libplatform}* \
-      ${GO_V8}/libv8/
+      ${LIBV8}/
 
 ### Mac
 
@@ -40,7 +42,7 @@ To build:
 Copy the libraries to the destination directory:
 
     cp -v out/x64.release/libv8_{base,libbase,external,libplatform}* \
-      ${GO_V8}/libv8/x86_64-apple-darwin
+      ${LIBV8}/x86_64-apple-darwin
 
 *Note: On MacOS, the resulting libraries contain debugging information by default
 (even though we've built the release version). As a result, the binaries are 30x
@@ -48,6 +50,10 @@ larger, then they should be. Strip that with* `strip -S out/x64.release/libv8*.a
 *to reduce the size of the archives very significantly.*
 
 Godspeed!
+
+### Headers
+    find ../v8/include/ ! -name OWNERS | grep '\.h$' | \
+        xargs -iFILE echo cp -v FILE include/
 
 License
 ---
