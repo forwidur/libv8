@@ -42,10 +42,10 @@ Copy the libraries to the destination directory:
     cp -v out/x64.release/libv8_{base,libbase,external,libplatform}* \
       ${GO_V8}/libv8/x86_64-apple-darwin
 
-Note: On MacOS, the resulting libraries contain debugging information by default
+*Note: On MacOS, the resulting libraries contain debugging information by default
 (even though we've built the release version). As a result, the binaries are 30x
-larger, then they should be. Strip that with `strip -S out/x64.release/libv8*.a`
-to reduce the size of the archives very significantly.
+larger, then they should be. Strip that with* `strip -S out/x64.release/libv8*.a`
+*to reduce the size of the archives very significantly.*
 
 Godspeed!
 
